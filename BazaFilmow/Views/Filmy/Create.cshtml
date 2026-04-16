@@ -1,0 +1,37 @@
+﻿@model BazaFilmow.Models.Film
+@{
+
+    ViewData["Title"] = "View";
+
+}
+<h1>Dodaj film</h1>
+<h4>Film</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Tytul" class="control-label"></label>
+                <input asp-for="Tytul" class="form-control" />
+                <span asp-validation-for="Tytul" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Dlugosc" class="control-label"></label>
+                <input asp-for="Dlugosc" class="form-control" />
+                <span asp-validation-for="Dlugosc" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Rezyser" class="control-label"></label>
+                <input asp-for="Rezyser" class="form-control" />
+                <span asp-validation-for="Rezyser" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Zapisz" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

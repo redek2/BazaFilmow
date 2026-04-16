@@ -1,0 +1,34 @@
+﻿@model IEnumerable<BazaFilmow.Models.Film>
+
+@{
+    ViewData["Title"] = "Katalog Filmów";
+}
+
+<h2>Lista filmów</h2>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Dodaj nowy film</a>
+</p>
+
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th>Tytuł</th>
+            <th>Długość</th>
+            <th>Reżyser</th>
+            <th>Akcje</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var film in Model)
+        {
+            <tr>
+                <td>@film.Tytul</td>
+                <td>@film.Dlugosc min</td>
+                <td>@film.Rezyser</td>
+                <td>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
