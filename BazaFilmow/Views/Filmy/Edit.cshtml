@@ -1,0 +1,71 @@
+﻿@model BazaFilmow.Models.Film
+
+@{
+    ViewData["Title"] = "Edytuj film";
+}
+
+<h2>Edytuj film</h2>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+            <input type="hidden" asp-for="Id" />
+
+            <div class="form-group mb-3">
+                <label asp-for="Tytul" class="control-label"></label>
+                <input asp-for="Tytul" class="form-control" />
+                <span asp-validation-for="Tytul" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Dlugosc" class="control-label"></label>
+                <input asp-for="Dlugosc" type="number" class="form-control" />
+                <span asp-validation-for="Dlugosc" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Rezyser" class="control-label"></label>
+                <input asp-for="Rezyser" class="form-control" />
+                <span asp-validation-for="Rezyser" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label class="control-label">Nowa okładka (opcjonalnie, JPG/PNG/WEBP)</label>
+
+                @if (!string.IsNullOrEmpty(Model.SciezkaOkladki))
+                {
+                    <div class="mb-2">
+                        <img src="@Model.SciezkaOkladki" alt="Aktualna okładka"
+                             style="max-width: 120px; max-height: 180px; object-fit: cover;"
+                             class="img-thumbnail mb-2" />
+                        <div class="small text-muted">Aktualna okładka (zostanie nadpisana)</div>
+                    </div>
+                }
+
+                <input type="file" name="plikOkladki" class="form-control" accept=".jpg,.jpeg,.png,.webp" />
+                @if (!string.IsNullOrEmpty(Model.SciezkaOkladki))
+                {
+                    <div class="form-check mt-2">
+                        <input type="checkbox" class="form-check-input" id="usunOkladke" name="usunOkladke" value="true">
+                        <label class="form-check-label" for="usunOkladke">
+                            Usuń obecną okładkę (bez przesyłania nowej)
+                        </label>
+                    </div>
+                }
+                <span asp-validation-for="SciezkaOkladki" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Zapisz zmiany" class="btn btn-primary" />
+                <a asp-action="Index" class="btn btn-secondary">Anuluj</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

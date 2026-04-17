@@ -1,6 +1,6 @@
-using System.Diagnostics;
 using BazaFilmow.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Diagnostics;
 
 namespace BazaFilmow.Controllers
 {

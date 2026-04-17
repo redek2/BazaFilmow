@@ -1,0 +1,42 @@
+﻿@model BazaFilmow.Models.Film
+
+@{
+    ViewData["Title"] = "Potwierdzenie usunięcia";
+}
+
+<h2>Czy na pewno chcesz usunąć ten film?</h2>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <dl class="row">
+            <dt class="col-sm-3">Tytuł</dt>
+            <dd class="col-sm-9">@Model.Tytul</dd>
+
+            <dt class="col-sm-3">Długość</dt>
+            <dd class="col-sm-9">@Model.Dlugosc min</dd>
+
+            <dt class="col-sm-3">Reżyser</dt>
+            <dd class="col-sm-9">@Model.Rezyser</dd>
+
+            <dt class="col-sm-3">Okładka</dt>
+            <dd class="col-sm-9">
+                @if (!string.IsNullOrEmpty(Model.SciezkaOkladki))
+                {
+                    <img src="@Model.SciezkaOkladki" alt="Okładka @Model.Tytul"
+                         style="max-width: 100px; max-height: 150px; object-fit: cover;"
+                         class="img-thumbnail" />
+                }
+                else
+                {
+                    <span class="text-muted small">Brak okładki</span>
+                }
+            </dd>
+        </dl>
+
+        <form asp-action="Delete">
+            <input type="hidden" asp-for="Id" />
+            <input type="submit" value="Usuń film" class="btn btn-danger" />
+            <a asp-action="Index" class="btn btn-secondary">Anuluj</a>
+        </form>
+    </div>
+</div>

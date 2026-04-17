@@ -1,37 +1,51 @@
 ﻿@model BazaFilmow.Models.Film
+
 @{
-
-    ViewData["Title"] = "View";
-
+    ViewData["Title"] = "Dodaj nowy film";
 }
-<h1>Dodaj film</h1>
-<h4>Film</h4>
+
+<h2>Dodaj nowy film</h2>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
+        <form asp-action="Create" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+            <div class="form-group mb-3">
                 <label asp-for="Tytul" class="control-label"></label>
                 <input asp-for="Tytul" class="form-control" />
                 <span asp-validation-for="Tytul" class="text-danger"></span>
             </div>
-            <div class="form-group">
+
+            <div class="form-group mb-3">
                 <label asp-for="Dlugosc" class="control-label"></label>
-                <input asp-for="Dlugosc" class="form-control" />
+                <input asp-for="Dlugosc" type="number" class="form-control" />
                 <span asp-validation-for="Dlugosc" class="text-danger"></span>
             </div>
-            <div class="form-group">
+
+            <div class="form-group mb-3">
                 <label asp-for="Rezyser" class="control-label"></label>
                 <input asp-for="Rezyser" class="form-control" />
                 <span asp-validation-for="Rezyser" class="text-danger"></span>
             </div>
+
+            <div class="form-group mb-3">
+                <label class="control-label">Okładka (JPG, PNG, WEBP)</label>
+                <input type="file" name="plikOkladki" class="form-control"
+                       accept=".jpg,.jpeg,.png,.webp" />
+                <span asp-validation-for="SciezkaOkladki" class="text-danger"></span>
+            </div>
+
             <div class="form-group">
-                <input type="submit" value="Zapisz" class="btn btn-primary" />
+                <input type="submit" value="Dodaj film" class="btn btn-success" />
+                <a asp-action="Index" class="btn btn-secondary">Powrót do listy</a>
             </div>
         </form>
     </div>
 </div>
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

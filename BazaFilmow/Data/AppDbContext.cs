@@ -1,5 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
-using BazaFilmow.Models;
+﻿using BazaFilmow.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace BazaFilmow.Data
 {

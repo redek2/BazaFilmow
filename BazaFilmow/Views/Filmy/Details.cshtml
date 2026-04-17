@@ -1,0 +1,39 @@
+﻿@model BazaFilmow.Models.Film
+
+@{
+    ViewData["Title"] = "Szczegóły filmu";
+}
+
+<h2>Szczegóły filmu</h2>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <dl class="row">
+            <dt class="col-sm-3">Tytuł</dt>
+            <dd class="col-sm-9">@Model.Tytul</dd>
+
+            <dt class="col-sm-3">Długość</dt>
+            <dd class="col-sm-9">@Model.Dlugosc min</dd>
+
+            <dt class="col-sm-3">Reżyser</dt>
+            <dd class="col-sm-9">@Model.Rezyser</dd>
+
+            <dt class="col-sm-3">Okładka</dt>
+            <dd class="col-sm-9">
+                @if (!string.IsNullOrEmpty(Model.SciezkaOkladki))
+                {
+                    <img src="@Model.SciezkaOkladki" alt="Okładka @Model.Tytul"
+                         style="max-width: 120px; max-height: 180px; object-fit: cover;"
+                         class="img-thumbnail" />
+                }
+                else
+                {
+                    <span class="text-muted">Brak okładki</span>
+                }
+            </dd>
+        </dl>
+
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Edytuj</a>
+        <a asp-action="Index" class="btn btn-secondary">Powrót do listy</a>
+    </div>
+</div>

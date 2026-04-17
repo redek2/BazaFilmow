@@ -1,5 +1,5 @@
-using Microsoft.EntityFrameworkCore;
 using BazaFilmow.Data;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
